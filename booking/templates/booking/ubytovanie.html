@@ -1,0 +1,74 @@
+{% extends 'booking/base.html' %} {% load static %} {% block content %}
+<h2>Ubytovanie</h2>
+
+<div class="ubytovanie-container">
+  <!-- Malá izba -->
+  <div class="room-block">
+    <div class="room-text">
+      <h3>Malá izba</h3>
+      <p>
+        Malá izba je ideálna pre jednotlivcov alebo páry, ktorí hľadajú pohodlné
+        a cenovo dostupné ubytovanie. Ponúka útulné prostredie, základné
+        vybavenie a komfort pre krátke pobyty.
+      </p>
+    </div>
+    <div class="room-image">
+      <img src="{% static 'images/malaizba.jpg' %}" alt="Malá izba" />
+    </div>
+  </div>
+
+  <!-- Apartmán -->
+  <div class="room-block">
+    <div class="room-text">
+      <h3>Apartmán</h3>
+      <p>
+        Apartmán poskytuje priestranné ubytovanie s oddelenou spálňou, obývacou
+        a modernou kúpeľňou. Ideálny pre rodiny alebo hostí, ktorí ocenia viac
+        priestoru a komfort.
+      </p>
+    </div>
+    <div class="room-image">
+      <img src="{% static 'images/apartman.jpg' %}" alt="Apartmán" />
+    </div>
+  </div>
+
+  <!-- Deluxe -->
+  <div class="room-block">
+    <div class="room-text">
+      <h3>Deluxe</h3>
+      <p>
+        Deluxe izba ponúka luxusné ubytovanie s moderným dizajnom, exkluzívnym
+        vybavením a nádherným výhľadom. Ideálna voľba pre tých, ktorí hľadajú
+        prvotriedny komfort a jedinečný zážitok.
+      </p>
+    </div>
+    <div class="room-image">
+      <img src="{% static 'images/deluxe.jpg' %}" alt="Deluxe izba" />
+    </div>
+  </div>
+
+  <!-- Booking Callout -->
+  <div class="booking-callout">
+    <div class="booking-text">
+      <p>
+        Ak si chcete objednať izbu, kliknite na tlačidlo "Objednať izbu". Ak
+        ešte nie ste prihlásení, budete presmerovaní na prihlasovaciu stránku.
+      </p>
+    </div>
+    <div class="booking-button">
+      {% if user.is_authenticated %}
+      <a href="{% url 'create_reservation' %}" class="btn btn-primary"
+        >Objednať izbu</a
+      >
+      {% else %}
+      <a
+        href="{% url 'login' %}?next={% url 'create_reservation' %}"
+        class="btn btn-secondary"
+      >
+        Prihláste sa na rezerváciu
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

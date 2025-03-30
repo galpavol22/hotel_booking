@@ -1,0 +1,231 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="sk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotel Tatry</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      .footer-button {
+        display: block;
+        width: 100%;
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 14px 0;
+        background-color: #ffd700;
+        color: #444;
+        text-align: center;
+        text-decoration: none;
+        font-size: 18px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+      .footer-button:hover {
+        background-color: #e6c200;
+      }
+      .footer-socials a {
+        font-size: 24px;
+        margin-right: 15px;
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+      .footer-socials a:hover {
+        color: #ffd700;
+      }
+      .cookie-banner {
+        position: fixed;
+        bottom: 80px;
+        left: 0;
+        right: 0;
+        background: rgba(34, 34, 34, 0.9);
+        color: #fff;
+        padding: 10px 20px;
+        text-align: center;
+        z-index: 10000;
+        display: none;
+        font-size: 14px;
+      }
+      .cookie-banner p {
+        display: inline-block;
+        margin: 0;
+      }
+      .cookie-accept {
+        background: #ffd700;
+        border: none;
+        padding: 5px 10px;
+        margin-left: 15px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background 0.3s ease;
+      }
+      .cookie-accept:hover {
+        background: #e6c200;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-container container">
+        <h1>Hotel Tatry</h1>
+        <button class="hamburger" id="hamburger">&#9776;</button>
+        <nav id="nav-menu">
+          <ul>
+            <li><a href="{% url 'index' %}">Domov</a></li>
+            <li><a href="{% url 'about' %}">O hoteli</a></li>
+            <li><a href="{% url 'gallery' %}">Galéria</a></li>
+            <li><a href="{% url 'kontakt' %}">Kontakt</a></li>
+            <li><a href="{% url 'ubytovanie' %}">Ubytovanie</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'moj_ucet' %}">Môj účet</a></li>
+            <li>
+              <form
+                action="{% url 'logout' %}"
+                method="post"
+                style="display: inline"
+              >
+                {% csrf_token %}
+                <button
+                  type="submit"
+                  style="
+                    background: none;
+                    border: none;
+                    color: #fff;
+                    cursor: pointer;
+                  "
+                >
+                  Odhlásiť sa
+                </button>
+              </form>
+            </li>
+            {% else %}
+            <li><a href="{% url 'login' %}">Môj účet</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    {% if messages %}
+    <div class="messages container">
+      {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+    {% endif %} {% block hero %}{% endblock %}
+
+    <main>
+      <div class="container">{% block content %}{% endblock %}</div>
+    </main>
+
+    <footer>
+      <div class="footer-container container">
+        <div class="footer-column">
+          <h3>Kontakt</h3>
+          <p>
+            Hotel Tatry<br />
+            Tatranská Lomnica 92,<br />
+            059 60 Vysoké Tatry<br />
+            Slovenská republika
+          </p>
+          <p><strong>Tel:</strong> +421 123 456 789</p>
+          <p><strong>GPS:</strong> 49.16573° N, 20.27546° E</p>
+        </div>
+        <div class="footer-column">
+          <h3>Sociálne siete</h3>
+          <div class="footer-socials">
+            <a href="https://www.facebook.com" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.youtube.com" target="_blank">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.twitter.com" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </div>
+          <div class="footer-mini-map">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2608.835591817905!2d20.275458192139563!3d49.1657288052309!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473e23aaae39c9ad%3A0x6e7bc213a8b7d29f!2sHotel%20Lomnica%2C%20Tatransk%C3%A1%20Lomnica%2092%2C%20059%2060%20Vysok%C3%A9%20Tatry!5e0!3m2!1ssk!2ssk!4v1742685075489!5m2!1ssk!2ssk"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3>O hoteli</h3>
+          <p>
+            Hotel Tatry ponúka komfortné ubytovanie priamo v srdci Vysokých
+            Tatier. Naše izby a služby sú prispôsobené pre rodiny, páry aj
+            jednotlivcov, ktorí hľadajú dokonalý relax v horách.
+          </p>
+          <a href="{% url 'ubytovanie' %}" class="footer-button"
+            >Objednať izbu</a
+          >
+          <p>&copy; 2025 Hotel Tatry. Všetky práva vyhradené.</p>
+        </div>
+      </div>
+    </footer>
+
+    <div id="cookie-banner" class="cookie-banner">
+      <p>Používaním tejto stránky súhlasíte s využívaním cookies.</p>
+      <button id="cookie-accept" class="cookie-accept">OK</button>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var hamburger = document.getElementById("hamburger");
+        var navMenu = document.getElementById("nav-menu");
+        hamburger.addEventListener("click", function () {
+          navMenu.classList.toggle("active");
+        });
+      });
+    </script>
+
+    <script>
+      function getCookie(name) {
+        let cookieArr = document.cookie.split(";");
+        for (let i = 0; i < cookieArr.length; i++) {
+          let cookiePair = cookieArr[i].split("=");
+          if (name === cookiePair[0].trim()) {
+            return decodeURIComponent(cookiePair[1]);
+          }
+        }
+        return null;
+      }
+
+      function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const cookieBanner = document.getElementById("cookie-banner");
+        if (!getCookie("cookieConsent")) {
+          cookieBanner.style.display = "block";
+        }
+        document
+          .getElementById("cookie-accept")
+          .addEventListener("click", function () {
+            setCookie("cookieConsent", "true", 365);
+            cookieBanner.style.display = "none";
+          });
+      });
+    </script>
+  </body>
+</html>

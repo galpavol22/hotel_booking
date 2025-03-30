@@ -1,0 +1,25 @@
+{% extends 'booking/base.html' %} {% load static %} {% block content %}
+<h2>Galéria</h2>
+
+<div class="custom-gallery-container">
+  <div class="gallery-item">
+    <img src="{% static 'images/fotka998.jpg' %}" alt="fotka998" />
+    <p>Krásny výhľad na tatranské štíty (fotka998)</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="{% static 'images/fotka999.jpg' %}" alt="fotka999" />
+    <p>Ikonický hotel pri jazere (fotka999)</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="{% static 'images/fotka997.jpg' %}" alt="fotka997" />
+    <p>Horská turistická trasa (fotka997)</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="{% static 'images/fotka7.jpg' %}" alt="fotka7" />
+    <p>Pokojná horská scenéria (fotka7)</p>
+  </div>
+</div>
+{% endblock %}

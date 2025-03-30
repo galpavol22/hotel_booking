@@ -1,0 +1,79 @@
+{% extends 'booking/base.html' %} {% load static %} {% block content %}
+<div class="about-container">
+  <img
+    src="{% static 'images/fotka997.jpg' %}"
+    alt="Hotel Tatry"
+    class="about-image"
+  />
+
+  <div class="about-text">
+    <h2>O Hoteli Tatry</h2>
+    <h3>Podnadpis – Miesto, kde sa stretáva pohodlie s prírodou</h3>
+    <p>
+      Hotel Tatry je jedinečný horský rezort, ktorý ponúka dokonalý únik od
+      mestského zhonu. Naše komfortné izby a apartmány sú navrhnuté tak, aby ste
+      si mohli vychutnať panoramatické výhľady na okolitú prírodu. U nás nájdete
+      moderné wellness centrum, špičkovú reštauráciu a množstvo aktivít pre
+      milovníkov turistiky či oddychu. Zažite dokonalý relax a načerpajte novú
+      energiu priamo v srdci slovenských veľhôr.
+    </p>
+    <p>
+      Hotel Tatry ponúka jedinečnú kombináciu pohodlia, prvotriednych služieb a
+      neprekonateľného výhľadu na majestátne horské masívy. Nachádza sa v srdci
+      Vysokých Tatier, len pár krokov od známych turistických chodníkov a
+      prírodných pamiatok. Vďaka ideálnej polohe sa hostia môžu tešiť na čerstvý
+      horský vzduch, množstvo športových aktivít počas celého roka a dokonalý
+      oddych od každodenného mestského ruchu.
+    </p>
+    <p>
+      V hoteli nájdete moderne vybavené izby a apartmány, ktoré sú navrhnuté s
+      ohľadom na maximálny komfort hostí. Každá izba disponuje vlastnou
+      kúpeľňou, televízorom a bezplatným Wi-Fi pripojením, pričom väčšina izieb
+      ponúka nádherné panoramatické výhľady na okolité vrcholy. V reštaurácii si
+      môžete vychutnať širokú paletu chutných jedál inšpirovaných tradičnou
+      slovenskou, ale aj medzinárodnou kuchyňou. Nechýba tu ani možnosť ochutnať
+      regionálne špeciality, ktoré sa vyznačujú poctivými surovinami z lokálnych
+      fariem.
+    </p>
+    <p>
+      Súčasťou hotela je taktiež wellness centrum, ktoré poskytuje rôzne druhy
+      masáží, sauny a bazén s vyhrievanou vodou. Pre milovníkov aktívneho
+      oddychu je v okolí pripravená bohatá sieť turistických trás, cyklotrás a v
+      zime množstvo lyžiarskych stredísk. Personál vám ochotne poradí, kam sa
+      vybrať na túru alebo ktoré miestne atrakcie stoja za návštevu. Hotel Tatry
+      víta návštevníkov z celého Slovenska aj zahraničia.
+    </p>
+  </div>
+</div>
+
+<!-- Nadpis cenníka -->
+<h2 class="cennik-nadpis">CENNÍK UBYTOVANIE – platný od 01.01.2025</h2>
+
+<table class="cennik-tabulka">
+  <thead>
+    <tr>
+      <th>Typ izby</th>
+      <th>Cena</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Jednolôžková</td>
+      <td>100 €</td>
+    </tr>
+    <tr>
+      <td>Dvojlôžková</td>
+      <td>120 €</td>
+    </tr>
+    <tr>
+      <td>Apartmán Deluxe</td>
+      <td>180 €</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="cennik-pozn">
+  * Uvedené ceny zahŕňajú raňajky a strážené parkovanie. Kontaktujte recepciu
+  pre viac informácií.
+</p>
+{% endblock %}

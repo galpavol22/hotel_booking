@@ -1,0 +1,36 @@
+{% extends 'booking/base.html' %} {% block content %}
+<h2>Môj účet</h2>
+
+<div class="user-info">
+  <h3>Osobné údaje</h3>
+  <p><strong>Meno:</strong> {{ user_profile.user.username }}</p>
+  <p><strong>Email:</strong> {{ user_profile.user.email }}</p>
+  <p><strong>Telefón:</strong> {{ user_profile.phone }}</p>
+</div>
+
+<h3>Moje rezervácie</h3>
+
+{% if reservations %}
+<ul>
+  {% for reservation in reservations %}
+  <li>
+    <strong>Izba:</strong> {{ reservation.room.room_number }}<br />
+    <strong>Typ izby:</strong> {{ reservation.room.room_type }} <br />
+    <strong>Príchod:</strong> {{ reservation.check_in }} <br />
+    <strong>Odchod:</strong> {{ reservation.check_out }} <br />
+    <strong>Cena:</strong> {{ reservation.total_price }} € <br />
+    <form
+      action="{% url 'cancel_reservation' reservation.id %}"
+      method="post"
+      style="display: inline"
+    >
+      {% csrf_token %}
+      <button type="submit" class="cancel-button">Zrušiť rezerváciu</button>
+    </form>
+  </li>
+  {% endfor %}
+</ul>
+
+{% else %}
+<p>Nemáte žiadne rezervácie.</p>
+{% endif %} {% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'booking/base.html' %} {% block content %}
+<h2>Môj účet</h2>
+<p><strong>Meno:</strong> {{ user.username }}</p>
+<p><strong>Email:</strong> {{ user.email }}</p>
+<p><strong>Telefón:</strong> {{ user_profile.phone }}</p>
+
+<h3>Moje rezervácie</h3>
+{% if reservations %}
+<ul>
+  {% for reservation in reservations %}
+  <li>
+    Izba: {{ reservation.room.room_number }} ({{ reservation.room.room_type
+    }})<br />
+    Od: {{ reservation.check_in }} do {{ reservation.check_out }}<br />
+    Cena: {{ reservation.total_price }} €
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>Nemáte žiadne rezervácie.</p>
+{% endif %} {% endblock %}

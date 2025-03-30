@@ -1,0 +1,106 @@
+{% extends 'booking/base.html' %} {% load static %} {% block hero %}
+<div class="slider-container">
+  <div
+    class="slide active"
+    style="background-image: url('{% static 'images/fotka111.jpg' %}')"
+  ></div>
+  <div
+    class="slide"
+    style="background-image: url('{% static 'images/obrazok22.jpg' %}')"
+  ></div>
+  <div
+    class="slide"
+    style="background-image: url('{% static 'images/obrazok23.jpg' %}')"
+  ></div>
+  <div
+    class="slide"
+    style="background-image: url('{% static 'images/obrazok24.jpg' %}')"
+  ></div>
+
+  <div class="slider-overlay">
+    <h2 class="slider-title">Vitajte v hoteli Tatry</h2>
+    <p class="slider-subtext">
+      Vitajte v hoteli Tatry, u nás si určite vyberiete. Vyberte si z našej
+      širokej ponuky a možnosti turistiky a oddychu.
+    </p>
+    <div class="slider-buttons">
+      <a href="{% url 'about' %}" class="slider-btn-link">O hoteli</a>
+      <a href="{% url 'ubytovanie' %}" class="slider-btn-link">Objednať izbu</a>
+    </div>
+  </div>
+  <button class="slider-btn prev">&lt;</button>
+  <button class="slider-btn next">&gt;</button>
+</div>
+{% endblock %} {% block content %}
+<div class="homepage-content">
+  <div class="homepage-second-photo">
+    <img
+      src="{% static 'images/fotka997.jpg' %}"
+      alt="Druhá fotka"
+      class="second-image"
+    />
+    <div class="text-right">
+      <h2>V krátkosti o hoteli..</h2>
+      <p>
+        Hotel Tatry sa nachádza v srdci majestátnych Tatier a ponúka jedinečné
+        spojenie moderného komfortu s tradičnou pohostinnosťou. Naša reštaurácia
+        ponúka pestré menu inšpirované lokálnymi surovinami, kde si môžete
+        vychutnať ako tradičné slovenské jedlá, tak aj medzinárodné špeciality.
+        Každý detail je premyslený, aby ste sa u nás cítili ako doma, pričom sa
+        staráme o to, aby každá návšteva bola nezabudnuteľným zážitkom.
+      </p>
+      <p>
+        Naše izby a apartmány sú navrhnuté s ohľadom na pohodlie a relaxáciu.
+        Väčšina izieb ponúka úchvatný výhľad na horskú krajinu, čo dodáva celému
+        prostrediu nezameniteľnú atmosféru. Pre tých, ktorí hľadajú aktívny
+        oddych, máme pripravené rôzne športové a turistické aktivity.
+      </p>
+      <p>
+        Vstúpte do sveta, kde sa snúbi príroda, kultúra a moderný životný štýl.
+        Hotel Tatry vás pozýva na relax, dobrodružstvo a nové zážitky, ktoré si
+        budete pamätať ešte dlho.
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const slides = document.querySelectorAll(".slide");
+    const prevBtn = document.querySelector(".prev");
+    const nextBtn = document.querySelector(".next");
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+    let slideInterval = setInterval(nextSlide, 5000);
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      showSlide(currentSlide);
+    }
+
+    nextBtn.addEventListener("click", function () {
+      nextSlide();
+      clearInterval(slideInterval);
+      slideInterval = setInterval(nextSlide, 5000);
+    });
+    prevBtn.addEventListener("click", function () {
+      prevSlide();
+      clearInterval(slideInterval);
+      slideInterval = setInterval(nextSlide, 5000);
+    });
+
+    showSlide(currentSlide);
+  });
+</script>
+{% endblock %}

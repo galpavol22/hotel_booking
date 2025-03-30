@@ -1,0 +1,15 @@
+{% extends 'booking/base.html' %}
+
+{% block content %}
+<h2>{{ room.name }}</h2>
+<div class="room-detail">
+    {% if room.image %}
+        <img src="{{ room.image.url }}" alt="{{ room.name }}">
+    {% else %}
+        <img src="{% static 'images/default_room.jpg' %}" alt="{{ room.name }}">
+    {% endif %}
+    <p>{{ room.description }}</p>
+    <p>Cena: {{ room.price }} EUR/noc</p>
+    <a href="{% url 'book_room' room.id %}" class="button">Rezervovať túto izbu</a>
+</div>
+{% endblock %}

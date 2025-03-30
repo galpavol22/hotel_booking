@@ -1,0 +1,12 @@
+{% extends 'booking/base.html' %} {% block content %}
+<h2>Detail rezervácie č. {{ reservation.id }}</h2>
+<ul>
+  <li><strong>Izba:</strong> Izba č. {{ reservation.room.room_number }}</li>
+  <li>
+    <strong>Typ izby:</strong> {{ reservation.room.get_room_type_display }}
+  </li>
+  <li><strong>Dátum príchodu:</strong> {{ reservation.check_in }}</li>
+  <li><strong>Dátum odchodu:</strong> {{ reservation.check_out }}</li>
+  <li><strong>Celková cena:</strong> {{ reservation.total_price }} €</li>
+</ul>
+{% endblock %}

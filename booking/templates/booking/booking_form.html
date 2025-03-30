@@ -1,0 +1,10 @@
+{% extends 'booking/base.html' %}
+
+{% block content %}
+<h2>Rezervácia izby: {{ room.name }}</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Odoslať rezerváciu</button>
+</form>
+{% endblock %}

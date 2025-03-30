@@ -1,0 +1,18 @@
+# Ignorovať virtuálne prostredie
+venv/
+
+# Ignorovať priečinok s prekompilovanými súbormi Pythonu
+__pycache__/
+
+# Ignorovať všetky .pyc súbory
+*.pyc
+
+# Ignorovať lokálnu SQLite databázu
+db.sqlite3
+
+# Ignorovať nepotrebné súbory vo Windows
+*.exe
+*.dll
+
+# Ignorovať nepotrebné súbory macOS
+.DS_Store

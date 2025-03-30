@@ -1,0 +1,23 @@
+{% extends 'booking/base.html' %} {% load static %} {% block content %}
+<div class="signup-container">
+  <h2>Vytvorenie nového účtu</h2>
+
+  <form method="post">
+    {% csrf_token %} {{ form.non_field_errors }}
+
+    <div>{{ form.username.label_tag }} {{ form.username }}</div>
+
+    <div>
+      {{ form.email.label_tag }} {{ form.email }} {{ form.email.errors }}
+    </div>
+
+    <div>
+      {{ form.phone.label_tag }} {{ form.phone }} {{ form.phone.errors }}
+    </div>
+
+    <div>{{ form.password.label_tag }} {{ form.password }}</div>
+
+    <button type="submit">Registrovať sa</button>
+  </form>
+</div>
+{% endblock %}
